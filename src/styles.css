@@ -9,24 +9,32 @@ body {
     Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   line-height: 1.5;
   color: #2a2a2a;
-  width: 1800px;
+  min-width: 480px;
   margin-left: auto;
   margin-right: auto;
+  background-color: #91bdd8;
+}
+
+.headers {
+  font-size: 50px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 50px;
+
 }
 
 .search-form {
-text-align: center;
+justify-content: center;
 margin-top: 50px;
 margin-bottom: 50px;
 }
 
-.form-control {
+body .search-form .form-control {
 color: #000;
-
 border-radius: 5px;
   border-color: #777D64;
   padding: 10px 30px 10px 30px;
-  width: 600px;
+  width: 480px;
 }
 
 .gallery {
@@ -57,7 +65,7 @@ border-radius: 5px;
   margin-right: 10px;
 }
 
-.btn-load-more {
+.button {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
@@ -71,7 +79,13 @@ border-radius: 5px;
   font-size: 16px;
   font-weight: bold;
   color: black;
-
-  background-color: #777D64;
   cursor: pointer;
+}
+
+.button.is-hidden {
+  display: none;
+}
+
+.button > .spinner.is-hidden {
+  display: none;
 }

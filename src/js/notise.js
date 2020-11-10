@@ -19,21 +19,21 @@ const myStack = new Stack({
   overlayClose: false,
 });
 
-export function noticeManyMatces() {
+export function noticeEmptyQuery() {
   error({
-    title: 'Oh No!',
+    title: 'ERROR!',
     text:
-      "Too many matches found. Please enter a more specific query!",
+      "You entered an empty query!",
     ...defaultOptions,
     stack: myStack,
   });
 }
 
-export function noticeValidMatces() {
+export function noticeNoImages() {
   error({
-    title: 'Oh No!',
+    title: 'ERROR!',
     text:
-      "Please enter a valid query!",
+      "Sorry, no images found!!",
     ...defaultOptions,
     stack: myStack,
   });
