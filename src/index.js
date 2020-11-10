@@ -2,8 +2,7 @@ import './styles.css';
 import debounce from 'lodash.debounce';
 
 
-import * as basicLightbox from 'basiclightbox';
-import 'basiclightbox/dist/basicLightbox.min.css';
+import onOpenModal from './js/open-modal.js';
 import LoadMoreBtn from './js/load-more-images.js';
 import listImagesTpl from './templates/listImages.hbs';
 import ImageApiService from './js/apiService.js';
@@ -24,6 +23,7 @@ const refs = {
 
 refs.inputForm.addEventListener('input', debounce(onInputSerch, 1000));
 loadMoreBtn.refs.button.addEventListener('click', loadMoreImages);
+refs.galeryImages.addEventListener('click', onOpenModal);
 
 async function onInputSerch(e) {
   e.preventDefault();
@@ -96,11 +96,3 @@ function noticeOnSearchInput(images) {
     }
 }
 
-function onOpenModal(event) {
-
-    if (event.target.nodeName !== 'IMG') {
-        return;
-    }
-    const instance = basicLightbox.create(`<img src="${event.target.dataset.src}" alt="" />`);
-    instance.show();
-}
