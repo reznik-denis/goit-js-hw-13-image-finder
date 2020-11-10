@@ -10,43 +10,41 @@ import ImageApiService from './js/apiService.js';
 
 const imageApiService = new ImageApiService();
 
-const refs = {
-    inputForm: document.querySelector('.form-control'),
-    galeryImages: document.querySelector('.gallery'),
-}
+let targetCoord = 0;
 
+const refs = {
+  inputForm: document.querySelector('.form-control'),
+  galeryImages: document.querySelector('.gallery'),
+  btn: document.querySelector('.btn-load-more'),
+};
+// btnStatus(true);
 refs.inputForm.addEventListener('input', debounce(onInputSerch, 1000));
 
-
 function onInputSerch() {
-
   imageApiService.query = refs.inputForm.value;
-  // clearCountysContainer();
-  return fetchImages();
-}
 
-// function dataLengthIf(data) {
-//   if (data.length >= 2 && data.length <= 10) {
-//       clearValueInput();
-//       return appendListMarkup(data);
-//     } else if (data.length > 10) {
-//       clearValueInput();
-//       return noticeManyMatces();
-//     }
-//     else if (data.status === 404) {
-//       clearValueInput();
-//       return noticeValidMatces();
-//     }
-//     else {
-//       clearValueInput();
-//       return appendCountryMarkup(data);
-//     };
-    
-// }
+  clearCountysContainer();
+  // btnStatus(false);
+  return fetchImageslist();
+};
+
+refs.btn.addEventListener('click', loadMoreImages);
+
+function loadMoreImages() {
+  targetCoord = refs.galeryImages.offsetHeight;
+  console.log(targetCoord)
+  imageApiService.incrementPage();
+  window.scrollTo({
+    top: targetCoord,
+    left: 0,
+    behavior: 'smooth',
+  });
+  return fetchImageslist();
+};
 
 function appendImagesMarkup(listImages) {
   refs.galeryImages.insertAdjacentHTML('beforeend', listImagesTpl(listImages));
-}
+};
 
 function fetchImageslist() {
   imageApiService.fetchImages().then(images => {
@@ -54,16 +52,13 @@ function fetchImageslist() {
   });
 };
   
+function clearCountysContainer() {
+  refs.galeryImages.innerHTML = '';
+};
 
-
-// function appendListMarkup(countrys) {
-//   refs.countyConteiner.insertAdjacentHTML('beforeend', listTpl(countrys));
+// function btnStatus(status) {
+//   refs.btn.disabled = status;
 // }
-
-// function clearCountysContainer() {
-//   refs.countyConteiner.innerHTML = '';
-// }
-
 // function clearValueInput() {
 //   refs.inputForm.value = '';
 // }

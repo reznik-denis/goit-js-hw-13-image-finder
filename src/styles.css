@@ -9,34 +9,69 @@ body {
     Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   line-height: 1.5;
   color: #2a2a2a;
-  width: 1600px;
+  width: 1800px;
   margin-left: auto;
   margin-right: auto;
 }
 
-.header-name {
-  font-size: 50px;
-  text-align: center;
-  margin-top: 30px;
-  margin-bottom: 30px;
+.search-form {
+text-align: center;
+margin-top: 50px;
+margin-bottom: 50px;
 }
 
-.colums {
+.form-control {
+color: #000;
+
+border-radius: 5px;
+  border-color: #777D64;
+  padding: 10px 30px 10px 30px;
+  width: 600px;
+}
+
+.gallery {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
-.description {
-  margin-right: 30px;
-  font-size: 30px;
+.photo-card {
+  margin: 15px;
+  font-size: 14px;
 }
 
-.bold-text {
+.stats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.stats-item {
+  display: inline-flex;
+  font-size: 18px;
+  margin: 10px;
+  align-items: center;
+}
+
+.material-icons {
+  margin-right: 10px;
+}
+
+.btn-load-more {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  max-width: 200px;
+  display: block;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 3px;
+
+  font-family: sans-serif;
+  font-size: 16px;
   font-weight: bold;
-}
+  color: black;
 
-.list {
-  font-size: 30px;
-  margin-top: 50px;
-  margin-left: 300px;
+  background-color: #777D64;
+  cursor: pointer;
 }
