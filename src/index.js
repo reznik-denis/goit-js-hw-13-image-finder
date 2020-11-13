@@ -24,22 +24,20 @@ const refs = {
 refs.inputForm.addEventListener('input', debounce(onInputSerch, 1000));
 loadMoreBtn.refs.button.addEventListener('click', loadMoreImages);
 refs.galeryImages.addEventListener('click', onOpenModal);
+window.addEventListener('keydown', onKeydownEnter)
 
-async function onInputSerch(e) {
-  e.preventDefault();
+
+async function onInputSerch() {
   try {
     imageApiService.query = refs.inputForm.value;
     imageApiService.restPage();
     clearCountysContainer();
     fetchImageslist();
-    loadMoreBtn.show();
   } catch (error) {
     console.log(error);
     console.log('Ваш запит не виконано. Помилка');
   }
 };
-
-
 
 async function loadMoreImages() {
   targetCoord = refs.galeryImages.offsetHeight;
@@ -61,9 +59,14 @@ function appendImagesMarkup(listImages) {
 async function fetchImageslist() {
   try {
     imageApiService.fetchImages().then(images => {
-    noticeOnSearchInput(images);
-    appendImagesMarkup(images);
-  });
+      noticeOnSearchInput(images);
+      appendImagesMarkup(images);
+      if (images.hits.length < 12) {
+        loadMoreBtn.hide();
+      } else {
+        loadMoreBtn.show();
+      }
+    });
   } catch (error) {
     console.log(error)
   }
@@ -95,4 +98,13 @@ function noticeOnSearchInput(images) {
     return noticeNoImages();
     }
 }
+
+function onKeydownEnter(evt) {
+    if (evt.code !== 'Enter') {
+        return
+    } else {
+      evt.preventDefault();
+      onInputSerch();
+  };   
+};
 
