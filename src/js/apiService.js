@@ -27,14 +27,6 @@ export default class ImageApiService {
     set query(newQuery) {
         this.searchQuery = newQuery;
     }
-
-    // get perPage() {
-    //     return this.perPage;
-    // }
-
-    // set perPage(newPerPage) {
-    //     this.perPage = newPerPage;
-    // }
 }
     
     
