@@ -15,7 +15,7 @@ const refs = {
   card: document.querySelector('.photo-card'),
 };
 
-refs.inputForm.addEventListener('input', debounce(onInputSerch, 3000));
+refs.inputForm.addEventListener('input', debounce(onInputSerch, 1000));
 refs.galeryImages.addEventListener('click', onOpenModal);
 window.addEventListener('keydown', onKeydownEnter);
 
